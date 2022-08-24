@@ -1,0 +1,8 @@
+배포관련
+
+1. views.py 에서 첫문장 제외 nano 이용
+2. allowed host
+3. config에서 static url / 하나 더
+
+-----------------------------------------
+debug = False 추가해야됨

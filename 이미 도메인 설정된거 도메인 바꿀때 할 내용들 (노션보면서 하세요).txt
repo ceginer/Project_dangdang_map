@@ -1,0 +1,51 @@
+이미 서버배포 된 상태에서 서버 바꿔서 배포하는 법
+
+1. 일단 key파일로 bash로 들어가
+2. chmod 400 {키 이름}
+3. 가상환경 실행
+4. 들어가서 git clone or pulㅣ
+5. cd 해서 거기로 들어가
+6. settings.py 에서 세팅 다해놓고
+7. collectstatic
+8. uwsgi는 sudo nano /etc/uwsgi/sites/Dangdang_map.ini 
+해서 옵션 파일 설정 (아마 되있을듯)
+9. $ sudo systemctl enable uwsgi
+$ sudo systemctl start uwsgi
+$ sudo systemctl status uwsgi
+
+$ sudo systemctl restart uwsg
+10. nginx 에서 sudo nano /etc/nginx/sites-available/Dangdang_map
+에서 자기 id 넣기
+11. 심볼릭 링크 sudo ln -s /etc/nginx/sites-available/Dangdang_map /etc/nginx/sites-enabled
+12. $ sudo nginx -t # 문법 체크
+$ sudo systemctl enable nginx
+$ sudo systemctl restart nginx
+$ sudo systemctl status nginx
+
+13. 
+sudo systemctl restart nginx
+sudo systemctl restart uwsgi
+sudo systemctl status nginx
+
+14. nginx config 설정 
+sudo vim /etc/nginx/sites-available/default 에서 자기 도메인 네임 지정
+그 이후로 
+https://luminitworld.tistory.com/85
+들어가서 그대로 진행
+
+----------------------------------
+
+재시작할 때 : 
+sudo systemctl restart nginx
+sudo systemctl restart uwsgi
+sudo systemctl status nginx
+
+--------------------------------
+이미지 설정해줄 때
+
+구글에 "static_root media_root" 치고 블로그 들어가셈
+
+server {
+location media 어쩌구
+
+}
